@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntroAdd — Introduce. Impact. Inspire.</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1a7a6e;
+    --green: #3ab54a;
+    --blue: #1e4d8c;
+    --light-green: #7dd87e;
+    --bg: #f5f9f7;
+    --dark: #0d1f1a;
+    --text: #1a2e28;
+    --muted: #5a7a72;
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --border: rgba(26,122,110,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245,249,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    color: white !important;
+    padding: 9px 22px;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    transition: opacity 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(58,181,74,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 20% 70%, rgba(26,122,110,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(26,122,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,122,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(26,122,110,0.09);
+    border: 1px solid rgba(26,122,110,0.2);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--teal);
+    margin-bottom: 28px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-badge span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .gradient-text {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--green) 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.12rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,122,110,0.25);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26,122,110,0.35);
+  }
+
+  .btn-secondary {
+    color: var(--teal);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+
+  .btn-secondary:hover { gap: 14px; }
+
+  .hero-visual {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    height: 420px;
+    animation: fadeUp 1.1s 0.2s ease both;
+  }
+
+  .orbit-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(26,122,110,0.2);
+    animation: spin 20s linear infinite;
+  }
+
+  .orbit-ring-2 {
+    inset: 40px;
+    animation-duration: 15s;
+    animation-direction: reverse;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .orbit-center {
+    position: absolute;
+    inset: 80px;
+    background: linear-gradient(135deg, rgba(26,122,110,0.08), rgba(58,181,74,0.06));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(26,122,110,0.15);
+  }
+
+  .orbit-center-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .orbit-dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(58,181,74,0.5);
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--dark);
+    padding: 28px 5%;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: center; }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--light-green), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* PROBLEM SECTION */
+  .problem {
+    background: white;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .problem-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .problem-card {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,122,110,0.1); }
+
+  .problem-card.accent {
+    background: linear-gradient(135deg, var(--teal), var(--blue));
+    color: white;
+    border-color: transparent;
+    grid-column: span 2;
+  }
+
+  .problem-icon {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .problem-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--dark);
+  }
+
+  .problem-card.accent h4 { color: white; }
+
+  .problem-card p {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .problem-card.accent p { color: rgba(255,255,255,0.75); }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 60px auto 0;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--green));
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(26,122,110,0.12);
+  }
+
+  .service-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(26,122,110,0.08);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgba(26,122,110,0.07);
+    color: var(--teal);
+    border: 1px solid rgba(26,122,110,0.15);
+    border-radius: 100px;
+    padding: 4px 12px;
+  }
+
+  /* PROCESS */
+  .process { background: white; }
+
+  .process-steps {
+    max-width: 900px;
+    margin: 60px auto 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), var(--green), transparent);
+  }
+
+  .process-step {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .step-number {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 16px rgba(26,122,110,0.3);
+  }
+
+  .step-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+
+  .step-content p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .step-duration {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--teal);
+    background: rgba(26,122,110,0.07);
+    border-radius: 100px;
+    padding: 3px 10px;
+    margin-top: 8px;
+  }
+
+  /* TARGET */
+  .target-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 60px auto 0;
+  }
+
+  .target-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .target-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(26,122,110,0.3);
+  }
+
+  .target-icon { font-size: 2rem; margin-bottom: 12px; }
+
+  .target-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .target-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  /* TEAM */
+  .team { background: white; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 60px auto 0;
+  }
+
+  .team-card {
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 36px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card.founder {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a3a30 100%);
+    color: white;
+    border-color: transparent;
+  }
+
+  .team-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .team-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .team-card.founder h4 { color: white; }
+
+  .team-role {
+    font-size: 0.82rem;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .team-card.founder .team-role { color: var(--light-green); }
+
+  .team-card p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .team-card.founder p { color: rgba(255,255,255,0.65); }
+
+  .team-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+
+  /* CONTACT */
+  .contact {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a3a30 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(58,181,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact .section-tag { color: var(--light-green); }
+
+  .contact .section-title { color: white; margin: 0 auto 18px; }
+
+  .contact .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto 48px; }
+
+  .contact-form {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-row { display: flex; gap: 16px; }
+
+  .form-field {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+
+  .form-field::placeholder { color: rgba(255,255,255,0.35); }
+
+  .form-field:focus {
+    border-color: rgba(58,181,74,0.5);
+    background: rgba(255,255,255,0.09);
+  }
+
+  textarea.form-field { resize: vertical; min-height: 120px; }
+
+  .btn-submit {
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(26,122,110,0.4);
+    align-self: center;
+    width: 100%;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26,122,110,0.5);
+  }
+
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .contact-item span { color: var(--light-green); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 28px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, var(--teal), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-slogan {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    nav .nav-links { display: none; }
+    .form-row { flex-direction: column; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">IntroAdd</div>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Digital Adoption Agency · Sousse, Tunisia
+    </div>
+    <h1>
+      We Bridge the Gap Between<br>
+      <span class="gradient-text">Technology & Real Usage</span>
+    </h1>
+    <p class="hero-sub">
+      IntroAdd helps Tunisian companies transform their digital investment into measurable revenue — through powerful storytelling campaigns and hands-on staff training.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Work With Us</a>
+      <a href="#services" class="btn-secondary">See Our Services →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+    <div class="orbit-center">
+      <div class="orbit-center-text">IA<br><span style="font-size:0.7rem;font-weight:400;background:linear-gradient(135deg,#1a7a6e,#3ab54a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">IntroAdd</span></div>
+    </div>
+    <div class="orbit-dot" style="top:8%;left:50%;transform:translateX(-50%);"></div>
+    <div class="orbit-dot" style="bottom:8%;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1e4d8c,#1a7a6e);"></div>
+    <div class="orbit-dot" style="top:50%;right:5%;transform:translateY(-50%);background:linear-gradient(135deg,#3ab54a,#7dd87e);"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-number">9K</span>
+    <span class="stat-label">TND per Mission</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">60%</span>
+    <span class="stat-label">Gross Margin</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">5</span>
+    <span class="stat-label">Phase Delivery Process</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">4×</span>
+    <span class="stat-label">Avg. Client ROI</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="problem-grid">
+    <div class="reveal">
+      <p class="section-tag">The Challenge</p>
+      <h2 class="section-title">The Digital Adoption Gap Is Costing You Revenue</h2>
+      <p class="section-sub">Tunisian companies invest thousands of dinars building digital platforms — then watch them fail silently. Customers don't use them. Staff can't explain them. The technology exists, but real adoption doesn't follow.</p>
+      <p class="section-sub" style="margin-top:16px;">IntroAdd was built to solve exactly this problem — from both sides simultaneously.</p>
+    </div>
+    <div class="problem-visual reveal">
+      <div class="problem-card">
+        <span class="problem-icon">📉</span>
+        <h4>Low Adoption Rates</h4>
+        <p>Most Tunisian SMEs see less than 20% active usage of their digital tools after launch.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-icon">🤷</span>
+        <h4>Untrained Staff</h4>
+        <p>Front-office teams can't confidently promote or explain the platform to customers.</p>
+      </div>
+      <div class="problem-card accent">
+        <span class="problem-icon">💡</span>
+        <h4>IntroAdd's Solution</h4>
+        <p>One integrated mission: we introduce your platform to the market AND train your team to sell it — measured by ROI, not just social media likes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="max-width:1400px;margin:0 auto;padding:100px 5%;">
+  <div class="reveal" style="text-align:center;margin-bottom:0;">
+    <p class="section-tag" style="text-align:center;">What We Do</p>
+    <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 16px;">Two Services. One Integrated Mission.</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;">Designed to work together, delivering results that neither service could achieve alone.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <h3>Impact Storytelling Campaign</h3>
+      <p>A structured external communication campaign that makes your digital platform clear, human, and compelling to your target market. We craft the narrative — you see the adoption numbers rise.</p>
+      <div class="service-tags">
+        <span class="tag">Brand Narrative</span>
+        <span class="tag">Explainer Videos</span>
+        <span class="tag">Social Media Series</span>
+        <span class="tag">Launch Strategy</span>
+      </div>
+    </div>
+    <div class="service-card reveal" style="animation-delay:0.15s;">
+      <div class="service-number">02</div>
+      <h3>Inspired Seller Workshop</h3>
+      <p>A 2-day intensive on-site training for your front-office staff. We transform your team into confident digital ambassadors — trained specifically on your platform, in your language, with your customers in mind.</p>
+      <div class="service-tags">
+        <span class="tag">Technique de Vente</span>
+        <span class="tag">On-Site Training</span>
+        <span class="tag">Adoption Scorecard</span>
+        <span class="tag">Staff Certification</span>
+      </div>
+    </div>
+    <div class="service-card reveal" style="animation-delay:0.3s;">
+      <div class="service-number">03</div>
+      <h3>ROI Audit & Partnership Review</h3>
+      <p>Every mission ends with a final financial report: the ROI Report and Staff Digital Adoption Scorecard. We measure what changed — in numbers, not opinions — and identify opportunities for continued growth.</p>
+      <div class="service-tags">
+        <span class="tag">ROI Report</span>
+        <span class="tag">Adoption Metrics</span>
+        <span class="tag">Strategic Roadmap</span>
+        <span class="tag">Retainer Options</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="reveal" style="text-align:center;">
+    <p class="section-tag" style="text-align:center;">How It Works</p>
+    <h2 class="section-title" style="text-align:center;">Our 5-Phase Mission Process</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;">Every IntroAdd mission follows a rigorous, partnership-first methodology designed to deliver measurable outcomes.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Deep Diagnostic & Goal Alignment</h4>
+        <p>We define measurable financial and adoption goals together. What does success look like in numbers for your organization?</p>
+        <span class="step-duration">2 weeks</span>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Strategy & Content Creation</h4>
+        <p>We develop the master narrative and produce all external campaign assets — videos, visuals, and social content series.</p>
+        <span class="step-duration">4 weeks</span>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Inspired Seller Workshop (On-Site)</h4>
+        <p>Two intensive days of staff training at your location. Every participant leaves as a confident digital ambassador for your platform.</p>
+        <span class="step-duration">2 days on-site</span>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h4>Campaign Execution & Monitoring</h4>
+        <p>We launch the campaign and continuously optimize based on real engagement and adoption data — not vanity metrics.</p>
+        <span class="step-duration">8 weeks</span>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h4>Final ROI Audit & Partnership Review</h4>
+        <p>We present your ROI Report and Staff Digital Adoption Scorecard, and discuss the roadmap for continued growth together.</p>
+        <span class="step-duration">Final presentation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="clients" style="max-width:1400px;margin:0 auto;padding:100px 5%;">
+  <div class="reveal" style="text-align:center;">
+    <p class="section-tag" style="text-align:center;">Who We Serve</p>
+    <h2 class="section-title" style="text-align:center;">Built for Tunisian Organizations<br>with Digital Ambition</h2>
+  </div>
+  <div class="target-grid reveal">
+    <div class="target-card">
+      <div class="target-icon">🏦</div>
+      <h4>Banks & Fintech</h4>
+      <p>Increase active mobile banking users and digital payment adoption.</p>
+    </div>
+    <div class="target-card">
+      <div class="target-icon">📱</div>
+      <h4>Telecom Companies</h4>
+      <p>Drive real engagement with digital service platforms and apps.</p>
+    </div>
+    <div class="target-card">
+      <div class="target-icon">🏥</div>
+      <h4>Health Tech</h4>
+      <p>Help patients navigate digital consultation and booking platforms.</p>
+    </div>
+    <div class="target-card">
+      <div class="target-icon">🎓</div>
+      <h4>Education & EdTech</h4>
+      <p>Simplify online registration and learning platform adoption.</p>
+    </div>
+    <div class="target-card">
+      <div class="target-icon">🏛️</div>
+      <h4>Public Services</h4>
+      <p>Make e-government platforms accessible and trusted by citizens.</p>
+    </div>
+    <div class="target-card">
+      <div class="target-icon">🛒</div>
+      <h4>E-Commerce</h4>
+      <p>Reduce cart abandonment and increase digital payment conversion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="reveal" style="text-align:center;">
+    <p class="section-tag" style="text-align:center;">Our Team</p>
+    <h2 class="section-title" style="text-align:center;">Finance Meets Creative Direction</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;">A unique combination of analytical discipline and creative excellence — the exact mix needed to deliver adoption results.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card founder reveal">
+      <div class="team-avatar">AO</div>
+      <h4>Anis Ouesleti</h4>
+      <div class="team-role">Founder & Lead Consultant</div>
+      <p>Finance student at ISFFS with hands-on expertise in Tunisian digital platforms, banking risk management (STB), and 6+ years of direct experience helping Tunisian citizens navigate digital tools. Certified in FinTech & Blockchain (ISSAT, 2026).</p>
+      <div class="team-skills">
+        <span class="tag" style="border-color:rgba(125,216,126,0.3);background:rgba(125,216,126,0.1);color:#7dd87e;">Financial Analysis</span>
+        <span class="tag" style="border-color:rgba(125,216,126,0.3);background:rgba(125,216,126,0.1);color:#7dd87e;">Digital Operations</span>
+        <span class="tag" style="border-color:rgba(125,216,126,0.3);background:rgba(125,216,126,0.1);color:#7dd87e;">Public Speaking</span>
+      </div>
+    </div>
+    <div class="team-card reveal" style="animation-delay:0.15s;">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#1e4d8c,#1a7a6e);">MB</div>
+      <h4>Mohamed Ben Belgacem</h4>
+      <div class="team-role">Creative Consultant & Art Director</div>
+      <p>10+ years as Art Director and Graphic Designer in Tunisia's advertising industry. Former Junior Art Director at Panorama Y&R Tunis. Master's in Image Design from ESSTeD. Expert in branding, motion design, video production, and digital content — responsible for all IntroAdd's visual deliverables.</p>
+      <div class="team-skills">
+        <span class="tag">Creative Direction</span>
+        <span class="tag">Motion Design</span>
+        <span class="tag">Branding</span>
+        <span class="tag">Video Production</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-tag">Get In Touch</p>
+  <h2 class="section-title">Ready to Close Your<br>Digital Adoption Gap?</h2>
+  <p class="section-sub">Tell us about your platform and your adoption challenge. We'll respond within 48 hours with an initial assessment — no commitment required.</p>
+  <form class="contact-form" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <input type="text" class="form-field" placeholder="Your Name" required>
+      <input type="text" class="form-field" placeholder="Organization" required>
+    </div>
+    <input type="email" class="form-field" placeholder="Email Address" required>
+    <input type="text" class="form-field" placeholder="Your Digital Platform (e.g. mobile app, e-payment)">
+    <textarea class="form-field" placeholder="Briefly describe your adoption challenge..."></textarea>
+    <button type="submit" class="btn-submit">Send Message — It's Free</button>
+  </form>
+  <div class="contact-info">
+    <div class="contact-item"><span>📧</span> aniswesleti09@gmail.com</div>
+    <div class="contact-item"><span>📞</span> +216 96 150 964</div>
+    <div class="contact-item"><span>📍</span> Sousse, Tunisia</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">IntroAdd</div>
+  <p>© 2026 IntroAdd. All rights reserved.</p>
+  <p class="footer-slogan">Introduce. Impact. Inspire.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Message Sent! We\'ll be in touch soon.';
+    btn.style.background = 'linear-gradient(135deg, #1a7a6e, #3ab54a)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message — It\'s Free';
+      btn.disabled = false;
+      e.target.reset();
+    }, 4000);
+  }
+</script>
+</body>
+</html>
